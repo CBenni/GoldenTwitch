@@ -17,6 +17,9 @@ var config = {
 		]
 	}]
 };
+if(localStorage.goldentwitch_layout) {
+	config = JSON.parse(localStorage.goldentwitch_layout);
+}
 
 var myLayout = new GoldenLayout( config );
 
@@ -30,8 +33,22 @@ myLayout.registerComponent( 'chat', function( container, state ){
 myLayout.init();
 
 function addTab(newTabConfig) {
-	myLayout.root.contentItems[0].addChild(newTabConfig)
+	myLayout.root.contentItems[0].addChild(newTabConfig);
 }
+
+var layoutChanged = false;
+myLayout.on( 'stateChanged', function(){
+	layoutChanged = true;
+});
+function saveState() {
+	if(layoutChanged) {
+		var state = JSON.stringify( myLayout.toConfig() );
+		localStorage.setItem( 'goldentwitch_layout', state );
+		layoutChanged = false;
+	}
+}
+setInterval(saveState,5000);
+
 
 $(document).contextmenu({
 		delegate: "*",
