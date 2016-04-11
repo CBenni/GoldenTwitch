@@ -1,0 +1,15 @@
+h2{
+	font: 14px Arial, sans-serif;
+	color:#fff;
+	padding: 10px;
+	text-align: center;
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+}
+
+.ui-contextmenu {
+	z-index: 999;
+}
