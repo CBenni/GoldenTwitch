@@ -33,7 +33,8 @@ myLayout.registerComponent( 'chat', function( container, state ){
 myLayout.init();
 
 function addTab(newTabConfig) {
-	myLayout.root.contentItems[0].addChild(newTabConfig);
+	if(myLayout.root.contentItems.length > 0) myLayout.root.contentItems[0].addChild(newTabConfig);
+	else myLayout.root.addChild(newTabConfig);
 }
 
 var layoutChanged = false;
