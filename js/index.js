@@ -24,10 +24,10 @@ if(localStorage.goldentwitch_layout) {
 var myLayout = new GoldenLayout( config );
 
 myLayout.registerComponent( 'stream', function( container, state ){
-  container.getElement().append($('<iframe src="http://player.twitch.tv/?channel='+state.channel+'&html5" frameborder="0" scrolling="no"></iframe>'));
+  container.getElement().append($('<iframe src="http://player.twitch.tv/?channel='+state.channel.toLowerCase()+'&html5" frameborder="0" scrolling="no"></iframe>'));
 });
 myLayout.registerComponent( 'chat', function( container, state ){
-  container.getElement().append($('<iframe src="http://www.twitch.tv/'+state.channel+'/chat?popout=" frameborder="0" scrolling="no"></iframe>'));
+  container.getElement().append($('<iframe src="http://www.twitch.tv/'+state.channel.toLowerCase()+'/chat?popout=" frameborder="0" scrolling="no"></iframe>'));
 });
 
 myLayout.init();
